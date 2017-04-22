@@ -485,7 +485,7 @@ Shiba.prototype.onCmdSeen = function*(msg, user) {
     return;
   }
 
-  if (Lib.isInvalidUsername(user) == false && profanity[user] == true) {
+  if (Pg.getExistingUser(username) != 'USERNAME_INVALID' && profanity[user]) {
     doSay('so trollol. very annoying. such mute');
     this.webClient.doMute(msg.username, '5m', msg.channelName);
     return;
